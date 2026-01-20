@@ -12,13 +12,12 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-
         <Route element={<ProtectedRoute />}>
           <Route element={<DashboardLayout />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/user/cards/:id" element={<CardsUser />} />
-            <Route path="/cards" element={<Cards />} />
+            <Route index element={<Dashboard />} />
+            <Route path="users" element={<Users />} />
+            <Route path="user/cards/:id" element={<CardsUser />} />
+            <Route path="cards" element={<Cards />} />
           </Route>
         </Route>
       </Routes>
