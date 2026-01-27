@@ -16,6 +16,7 @@ import {
   AlertCircle,
   X
 } from 'lucide-react';
+import UsersWithBalance from '../components/UsersWithBalance';
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -304,9 +305,8 @@ export default function Dashboard() {
             <p className="text-sm text-red-700">{error}</p>
           </div>
         )}
-
         {/* Statistiques principales */}
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 ${
+        <div className={`hidden grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 ${
           user.role === 'admin' ? 'lg:grid-cols-5' : 'lg:grid-cols-4'
         }`}>
           {/* Solde total */}
@@ -378,7 +378,7 @@ export default function Dashboard() {
             <p className="text-2xl font-light text-gray-900">{stats.totalRecharges}</p>
           </div>
         </div>
-
+        <UsersWithBalance/>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Liste des utilisateurs (admin only) */}
           {user.role === 'admin' && (

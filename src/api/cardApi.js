@@ -14,3 +14,8 @@ export const getCardLoads = (cardId) =>
 // Récupérer le nombre total de recharges d'une carte
 export const getCardLoadCount = (cardId) =>
   api.get(`/cards/loads/count/${cardId}`);
+
+// Modifier une recharge
+export const updateCardLoad = (loadId, data) =>
+  api.put(`/cards/load/${loadId}`, data);
+
