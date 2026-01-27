@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "https://m.cosinus.ma/api", // adapte si ton backend est ailleurs
+  baseURL: "https://lightgrey-giraffe-880811.hostingersite.com/api", // adapte si ton backend est ailleurs
 })
 
 api.interceptors.request.use((config) => {
@@ -13,3 +13,4 @@ api.interceptors.request.use((config) => {
 })
 
 export default api
+
