@@ -24,9 +24,9 @@ export default function UsersWithBalance() {
   }, []);
 
   const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('fr-MA', {
+    return new Intl.NumberFormat("fr-MA", {
       minimumFractionDigits: 2,
-      maximumFractionDigits: 2
+      maximumFractionDigits: 2,
     }).format(amount);
   };
 
@@ -35,7 +35,9 @@ export default function UsersWithBalance() {
       <div className="min-h-[400px] flex items-center justify-center">
         <div className="text-center">
           <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600 font-medium">Chargement des utilisateurs...</p>
+          <p className="text-gray-600 font-medium">
+            Chargement des utilisateurs...
+          </p>
         </div>
       </div>
     );
@@ -48,8 +50,12 @@ export default function UsersWithBalance() {
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <UsersIcon className="w-8 h-8 text-gray-400" />
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">Aucun utilisateur trouvé</h3>
-          <p className="text-gray-500">Il n'y a aucun utilisateur avec un solde pour le moment</p>
+          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+            Aucun utilisateur trouvé
+          </h3>
+          <p className="text-gray-500">
+            Il n'y a aucun utilisateur avec un solde pour le moment
+          </p>
         </div>
       </div>
     );
@@ -66,9 +72,11 @@ export default function UsersWithBalance() {
             </div>
             Utilisateurs & Soldes
           </h2>
-          <p className="text-gray-500 mt-1">Liste complète des utilisateurs avec leur solde par banque</p>
+          <p className="text-gray-500 mt-1">
+            Liste complète des utilisateurs avec leur solde par banque
+          </p>
         </div>
-        
+
         <button
           onClick={fetchUsersWithBalance}
           className="flex items-center gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
@@ -100,9 +108,14 @@ export default function UsersWithBalance() {
             </thead>
             <tbody className="divide-y divide-gray-200 bg-white">
               {users.map((user) => (
-                <tr key={user.id} className="hover:bg-gray-50 transition-colors">
+                <tr
+                  key={user.id}
+                  className="hover:bg-gray-50 transition-colors"
+                >
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className="text-sm font-medium text-gray-900">#{user.id}</span>
+                    <span className="text-sm font-medium text-gray-900">
+                      #{user.id}
+                    </span>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
@@ -110,32 +123,35 @@ export default function UsersWithBalance() {
                         {user.fullname?.charAt(0).toUpperCase() || "U"}
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-gray-900 truncate">{user.fullname}</p>
-                        <p className="text-sm text-gray-500 truncate">{user.email}</p>
+                        <p className="text-sm font-semibold text-gray-900 truncate">
+                          {user.fullname}
+                        </p>
+                        <p className="text-sm text-gray-500 truncate">
+                          {user.email}
+                        </p>
                       </div>
                     </div>
                   </td>
-<td className="px-6 py-4 whitespace-nowrap text-right">
-  <span className="text-lg font-bold text-gray-900">
-    {formatCurrency(
-      user.Cards
-        .filter(card => card.type.toLowerCase() === "afriquia")
-        .reduce((sum, card) => sum + card.balance, 0)
-    )}
-  </span>
-  <span className="text-sm text-gray-500 ml-1">DH</span>
-</td>
-<td className="px-6 py-4 whitespace-nowrap text-right">
-  <span className="text-lg font-bold text-gray-900">
-    {formatCurrency(
-      user.Cards
-        .filter(card => card.type.toLowerCase() === "attijari")
-        .reduce((sum, card) => sum + card.balance, 0)
-    )}
-  </span>
-  <span className="text-sm text-gray-500 ml-1">DH</span>
-</td>
-
+                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                    <span className="text-lg font-bold text-gray-900">
+                      {formatCurrency(
+                        user.Cards.filter(
+                          (card) => card.type.toLowerCase() === "afriquia",
+                        ).reduce((sum, card) => sum + card.balance, 0),
+                      )}
+                    </span>
+                    <span className="text-sm text-gray-500 ml-1">DH</span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right">
+                    <span className="text-lg font-bold text-gray-900">
+                      {formatCurrency(
+                        user.Cards.filter(
+                          (card) => card.type.toLowerCase() === "attijari",
+                        ).reduce((sum, card) => sum + card.balance, 0),
+                      )}
+                    </span>
+                    <span className="text-sm text-gray-500 ml-1">DH</span>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "http://localhost:5000/api", // adapte si ton backend est ailleurs
+  baseURL: "https://m.cosinus.ma/api", // adapte si ton backend est ailleurs
 })
 
 api.interceptors.request.use((config) => {
