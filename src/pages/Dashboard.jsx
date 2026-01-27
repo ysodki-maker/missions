@@ -306,7 +306,7 @@ export default function Dashboard() {
           </div>
         )}
         {/* Statistiques principales */}
-        <div className={`hidden grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 ${
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 ${
           user.role === 'admin' ? 'lg:grid-cols-5' : 'lg:grid-cols-4'
         }`}>
           {/* Solde total */}
@@ -329,7 +329,6 @@ export default function Dashboard() {
               })} <span className="text-sm text-gray-600">MAD</span>
             </p>
           </div>
-
           {/* Nombre d'utilisateurs (admin only) */}
           {user.role === 'admin' && (
             <div className="bg-white rounded-lg border border-gray-200 p-6">
@@ -378,7 +377,7 @@ export default function Dashboard() {
             <p className="text-2xl font-light text-gray-900">{stats.totalRecharges}</p>
           </div>
         </div>
-        <UsersWithBalance/>
+        {user.role === "admin" && <UsersWithBalance/>}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Liste des utilisateurs (admin only) */}
           {user.role === 'admin' && (
