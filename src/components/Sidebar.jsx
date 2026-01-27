@@ -32,7 +32,7 @@ export default function Sidebar() {
         <div className="flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center text-base shadow-sm">
-              <img src="../../public/logo_n.jpeg"/>
+              <img src="./logo_n.jpeg"/>
             </div>
             <h1 className="text-lg font-bold text-gray-900">BankAdmin</h1>
           </div>
@@ -73,7 +73,7 @@ export default function Sidebar() {
         <div className="hidden lg:block p-6 border-b border-gray-100">
           <div className="flex items-center gap-3">
             <div className="w-15 h-15 bg-blue-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
-              <img src="../../public/logo_n.jpeg"/>
+              <img src="./logo_n.jpeg"/>
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">
@@ -89,7 +89,7 @@ export default function Sidebar() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
-                💳
+                <img src="./logo_n.jpeg"/>
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">
@@ -198,4 +198,5 @@ export default function Sidebar() {
       </nav>
     </>
   );
+
 }
