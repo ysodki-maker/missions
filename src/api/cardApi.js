@@ -19,3 +19,5 @@ export const getCardLoadCount = (cardId) =>
 export const updateCardLoad = (loadId, data) =>
   api.put(`/cards/load/${loadId}`, data);
 
+export const deleteCardLoad = (loadId) =>
+  api.delete(`/cards/load/${loadId}`);
