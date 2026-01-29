@@ -6,6 +6,7 @@ import {
   getCardLoads,
   getCardLoadCount,
   updateCardLoad,
+  deleteCardLoad
 } from "../api/cardApi";
 import {
   getCardOperations,
@@ -74,16 +75,31 @@ export default function Cards() {
     }
   };
 
-  // const handleDeleteRecharge = async (loadId) => {
-  //   if (!confirm("Supprimer cette recharge ?")) return;
+  const handleDeleteRecharge = async (loadId) => {
+  if (!confirm("Annuler cette recharge ?")) return;
 
-  //   try {
-  //     await deleteCardLoad(loadId);
-  //     loadCardData(selectedCard.id);
-  //   } catch (error) {
-  //     console.error("Erreur suppression recharge:", error);
-  //   }
-  // };
+  // 🔍 retrouver la recharge
+  const load = loads.find((l) => l.id === loadId);
+  if (!load || !selectedCard) return;
+
+  try {
+    // 1️⃣ Optimistic update : on retire le montant
+    updateCardBalance(selectedCard.id, load.amount, false);
+
+    // 2️⃣ Appel backend (annulation logique)
+    await deleteCardLoad(loadId);
+
+    // 3️⃣ Rafraîchir données (sécurité)
+    loadCardData(selectedCard.id);
+
+  } catch (error) {
+    console.error("Erreur suppression recharge:", error);
+
+    // 4️⃣ Rollback si erreur
+    updateCardBalance(selectedCard.id, load.amount, true);
+  }
+};
+
 
   // ----------------------------------------------
 
@@ -397,12 +413,12 @@ export default function Cards() {
                               >
                                 <Edit2 className="w-4 h-4 text-gray-400" />
                               </button>
-                              {/* <button
+                              <button
                               onClick={() => handleDeleteRecharge(load.id)}
                               className="p-1.5 hover:bg-gray-100 rounded transition-colors"
                             >
                               <Trash2 className="w-4 h-4 text-gray-400" />
-                            </button> */}
+                            </button>
                             </div>
                           )}
                         </div>
