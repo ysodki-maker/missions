@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "https://forestgreen-kudu-313030.hostingersite.com/api", // adapte si ton backend est ailleurs
+  baseURL: "https://cardscore.cosinus.ma/api", // adapte si ton backend est ailleurs
 })
 
 api.interceptors.request.use((config) => {
@@ -13,6 +13,7 @@ api.interceptors.request.use((config) => {
 })
 
 export default api
+
 
 
 
